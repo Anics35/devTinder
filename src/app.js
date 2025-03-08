@@ -2,22 +2,12 @@ const express = require ("express");
 
 const app = express();
 
-
+const {adminAuth, userAuth}=require("./middleware/auth")
 // Auth Middleware
-app.use("/admin", (req, res, next) => {
-    console.log("Admin auth gettting checked");
-    
-    const token = "xyz";
-    const isAdminAuthorized = req.headers.authorization === token;
-    
-    if (!isAdminAuthorized) {
-        return res.status(403).send("Unauthorized request");
-    }
-    next();
-});
+app.use("/admin", adminAuth);
 
 // User Route
-app.get("/user", (req, res) => {
+app.get("/user", userAuth, (req, res) => {
     res.send("User Data Sent");
 });
 
