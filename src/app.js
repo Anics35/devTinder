@@ -71,6 +71,12 @@ app.delete("/user", async (req, res) => {
 app.patch("/user", async (req, res) => {
   const userId = req.body.userId;
   const data = req.body;
+
+  const ALLOWED_UPDATES = [
+    "photoUrl", "about", "gender", "age"
+]
+
+const isUpdateAllowed = Object.keys
   try {
     const user = await User.findByIdAndUpdate({ _id: userId }, data, {
       returnDocument: "after",
