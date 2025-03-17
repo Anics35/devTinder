@@ -26,6 +26,10 @@ const mongoose = require("mongoose");
          }
        },
      },
+     rollNumber: {
+      type: String,
+     // required: true,
+    },
      password: {
        type: String,
        required: true,
@@ -56,13 +60,13 @@ const mongoose = require("mongoose");
          }
        },
      },
-     about: {
-       type: String,
-       default: "This is a default about of the user!",
-     },
-     skills: {
-       type: [String],
-     },
+    //  about: {
+    //    type: String,
+    //    default: "This is a default about of the user!",
+    //  },
+    //  skills: {
+    //    type: [String],
+    //  },
    },
    {
      timestamps: true,
